@@ -28,19 +28,4 @@ public class SignupController {
 		return  "thanksClicker";
 	}
 	
-	
-	@ModelAttribute("fnPh")
-	String getFnPh(){
-		return "First Name";
-	}
-
-	@ModelAttribute("lnPh")
-	String getLnPh(){
-		return "Last Name";
-	}
-	
-	@ModelAttribute("emailPh")
-	String getEmailPh(){
-		return "Email";
-	}
 }

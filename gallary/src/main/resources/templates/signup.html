@@ -1,39 +1,31 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
-<head>
-<meta charset="ISO-8859-1" />
-<title>Photographer Signup</title>
-</head>
+<head th:replace="fragments/header :: header('Photographer Signup')"/>
+
 <body>
-	
+<nav th:replace="fragments/header ::navigation"></nav>
 	<form th:action="@{/saveclicker}" method="post" th:object="${clicker}">
-
-	 <ul th:if="${#fields.hasErrors('*')}" class="errorlist">
-		<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input
-			is incorrect</li>
-	</ul>
 	
 	 <label for="fname" > First Name :  </label>	
 	 <input name="firstName" th:field="${clicker.firstName}" type="text"
-			th:placeholder="${fnPh}" required="required" id="fname"/>
+			required="required" id="fname"/>
 	
 	 <label for="lname" > Last Name :  </label>
 	 <input
 			name="lastName" th:field="${clicker.lastName}" type="text"
-			th:placeholder="${lnPh}" required="required" id="lname"/>
+			 required="required" id="lname"/>
 	 
 	 <label for="email" > Email :  </label>
 	 <input
 			name="email" th:field="${clicker.email}" 
-			th:placeholder="${emailPh}" type="email" id="email"/> 
+			 type="email" id="email"/> 
 			
 		<input
 			type="submit" value="submit"/>
 	</form>
 
-
+<div th:replace="fragments/footer :: footer"> </div>
 </body>
 </html>
