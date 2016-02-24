@@ -14,7 +14,6 @@ import com.clicker.model.Clicker;
 @Controller
 public class SignupController {
 	
-	
 	@RequestMapping("/signup")
 	public String signup(@Valid Clicker clicker,BindingResult br) {
 		return  "signup";
@@ -24,8 +23,13 @@ public class SignupController {
 	@RequestMapping(value="/saveclicker", method=RequestMethod.POST )
 	public String saveuser(@Valid Clicker clicker,BindingResult br) {
 		if(br.hasErrors()) return "signup";
-		
 		return  "thanksClicker";
 	}
+	
+	@RequestMapping("design")
+	public String design(){
+		return "design";
+	}
+	
 	
 }
