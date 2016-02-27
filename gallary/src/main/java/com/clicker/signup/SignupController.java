@@ -32,4 +32,9 @@ public class SignupController {
 	}
 	
 	
+	@RequestMapping("/")
+	public String index(){
+		return "index";
+	}
+	
 }
