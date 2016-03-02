@@ -5,6 +5,17 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.Email;
 
 public class Clicker {
+	
+	
+	@NotNull
+	String userName;
+	
+	@NotNull
+	String password;
+	
+	@NotNull
+	Gender gender;
+	
 	@NotNull
 	String firstName;
 	
@@ -36,5 +47,29 @@ public class Clicker {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
 	}
 }

@@ -20,19 +20,25 @@ public class SignupController {
 
 	}
 	
+	@RequestMapping("/registration")
+	public String register() {
+		return  "registration";
+
+	}
+	
 	@RequestMapping(value="/saveclicker", method=RequestMethod.POST )
 	public String saveuser(@Valid Clicker clicker,BindingResult br) {
-		if(br.hasErrors()) return "signup";
+		if(br.hasErrors()) return "registration";
 		return  "thanksClicker";
 	}
 	
-	@RequestMapping("design")
+	@RequestMapping("/design")
 	public String design(){
 		return "design";
 	}
 	
 	
-	@RequestMapping("/")
+	@RequestMapping(value="/index")
 	public String index(){
 		return "index";
 	}

@@ -4,11 +4,11 @@
 	<head>
 		<title>PhotoBomB Registration</title>
 		
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0"/>
 		
-		<link rel="stylesheet" href="css/demo.css" />
-		<link rel="stylesheet" href="css/sky-forms.css" />
+		<link rel="stylesheet" href="/css/demo.css" />
+		<link rel="stylesheet" href="/css/sky-forms.css" />
 		<!--[if lt IE 9]>
 			<link rel="stylesheet" href="css/sky-forms-ie8.css">
 		<![endif]-->
@@ -25,14 +25,14 @@
 	<body class="bg-cyan">
 		<div class="body body-s">
 		
-			<form action="" class="sky-form">
+			<form action="/saveclicker" class="sky-form" method="post">
 				<header><b>Registration form</b></header>
 				
 				<fieldset>					
 					<section>
 						<label class="input">
 							<i class="icon-append icon-user"></i>
-							<input type="text" placeholder="Username">
+							<input type="text" placeholder="Username" name="userName"/>
 							<b class="tooltip tooltip-bottom-right">Only characters</b>
 						</label>
 					</section>	
@@ -40,7 +40,7 @@
 					<section>
 						<label class="input">
 							<i class="icon-append icon-envelope-alt"></i>
-							<input type="text" placeholder="Email address">
+							<input type="text" placeholder="Email address" name="email"/>
 							<b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
 						</label>
 					</section>
@@ -48,7 +48,7 @@
 					<section>
 						<label class="input">
 							<i class="icon-append icon-lock"></i>
-							<input type="password" placeholder="Password">
+							<input type="password" placeholder="Password" name="password"/>
 							<b class="tooltip tooltip-bottom-right">Only characters and numbers</b>
 						</label>
 					</section>
@@ -56,8 +56,8 @@
 					<section>
 						<label class="input">
 							<i class="icon-append icon-lock"></i>
-							<input type="password" placeholder="Confirm password">
-							<b class="tooltip tooltip-bottom-right">Only characters and numbers</b>
+							<input type="password" placeholder="Confirm password"/>
+							<b class="tooltip tooltip-bottom-right"  name="confirmPassword">Only characters and numbers</b>
 						</label>
 					</section>
 				</fieldset>
@@ -66,20 +66,20 @@
 					<div class="row">
 						<section class="col col-6">
 							<label class="input">
-								<input type="text" placeholder="First name">
+								<input type="text" placeholder="First name" name="firstName"/>
 							</label>
 						</section>
 						<section class="col col-6">
 							<label class="input">
-								<input type="text" placeholder="Last name">
+								<input type="text" placeholder="Last name" name="lastName"/>
 							</label>
 						</section>
 					</div>
 					
 					<section>
 						<label class="select">
-							<select>
-								<option value="0" selected disabled>Gender</option>
+							<select name="gender">
+								<option value="0" selected="selected" disabled="disabled">Gender</option>
 								<option value="1">Male</option>
 								<option value="2">Female</option>
 								<option value="3">Other</option>
@@ -89,8 +89,8 @@
 					</section>
 					
 					<section>
-						<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>I agree to the Terms of Service</label>
-						<label class="checkbox"><input type="checkbox" name="checkbox"><i></i>I want to receive news and  special offers</label>
+						<label class="checkbox"><input type="checkbox" name="checkbox"/><i></i>I agree to the Terms of Service</label>
+						<label class="checkbox"><input type="checkbox" name="checkbox"/><i></i>I want to receive news and  special offers</label>
 					</section>
 				</fieldset>
 				<footer>
