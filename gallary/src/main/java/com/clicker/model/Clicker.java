@@ -3,25 +3,27 @@ package com.clicker.model;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 public class Clicker {
 	
 	
-	@NotNull
+	@NotEmpty(message="Please provide the Username")
 	String userName;
 	
-	@NotNull
+	@NotEmpty(message="Please provide the password")
 	String password;
 	
-	@NotNull
+	@NotNull(message="Please select the gender")
 	Gender gender;
 	
-	@NotNull
+	@NotEmpty(message="Please provide First name")
 	String firstName;
 	
-	@NotNull
+	@NotEmpty(message="Please provide Last name")
 	String lastName;
 	
+	@NotEmpty(message="Please provide Email address")
 	@Email
 	String email;
 

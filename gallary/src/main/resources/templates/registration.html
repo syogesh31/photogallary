@@ -1,6 +1,5 @@
-
-<!DOCTYPE html> 
-<html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd"> 
+<html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<title>PhotoBomB Registration</title>
 		
@@ -25,31 +24,33 @@
 	<body class="bg-cyan">
 		<div class="body body-s">
 		
-			<form action="/saveclicker" class="sky-form" method="post">
+			<form th:action="@{/registration}" class="sky-form" method="post" th:object="${clicker}">
 				<header><b>Registration form</b></header>
-				
 				<fieldset>					
 					<section>
 						<label class="input">
 							<i class="icon-append icon-user"></i>
-							<input type="text" placeholder="Username" name="userName"/>
+							<input type="text" placeholder="Username"  th:field="*{userName}"/>
 							<b class="tooltip tooltip-bottom-right">Only characters</b>
+							<span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}">User Name error Message</span>
 						</label>
 					</section>	
 					
 					<section>
 						<label class="input">
 							<i class="icon-append icon-envelope-alt"></i>
-							<input type="text" placeholder="Email address" name="email"/>
+							<input type="email" placeholder="Email address" th:field="*{email}"/>
 							<b class="tooltip tooltip-bottom-right">Needed to verify your account</b>
+							<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Error</span>
 						</label>
 					</section>
 					
 					<section>
 						<label class="input">
 							<i class="icon-append icon-lock"></i>
-							<input type="password" placeholder="Password" name="password"/>
+							<input type="password" placeholder="Password"  th:field="*{password}"/>
 							<b class="tooltip tooltip-bottom-right">Only characters and numbers</b>
+							<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password error Message</span>
 						</label>
 					</section>
 					
@@ -58,6 +59,7 @@
 							<i class="icon-append icon-lock"></i>
 							<input type="password" placeholder="Confirm password"/>
 							<b class="tooltip tooltip-bottom-right"  name="confirmPassword">Only characters and numbers</b>
+							
 						</label>
 					</section>
 				</fieldset>
@@ -66,27 +68,26 @@
 					<div class="row">
 						<section class="col col-6">
 							<label class="input">
-								<input type="text" placeholder="First name" name="firstName"/>
+								<input type="text" placeholder="First name" th:field="*{firstName}"/>
+								<span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name error Message</span>
 							</label>
 						</section>
 						<section class="col col-6">
 							<label class="input">
-								<input type="text" placeholder="Last name" name="lastName"/>
+								<input type="text" placeholder="Last name"  th:field="*{lastName}"/>
+								<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name error Message</span>
 							</label>
 						</section>
 					</div>
-					
 					<section>
 						<label class="select">
 							<select name="gender">
-								<option value="0" selected="selected" disabled="disabled">Gender</option>
-								<option value="1">Male</option>
-								<option value="2">Female</option>
-								<option value="3">Other</option>
+								<option value="0" th:selected="selected" th:disabled="disabled">Gender</option>
+								<option th:each="gender : ${ui.genderList}" th:value="${gender.code}" th:text="${gender.discription}" ></option>
 							</select>
 							<i></i>
 						</label>
-					</section>
+					</section> 
 					
 					<section>
 						<label class="checkbox"><input type="checkbox" name="checkbox"/><i></i>I agree to the Terms of Service</label>
@@ -94,7 +95,7 @@
 					</section>
 				</fieldset>
 				<footer>
-					<button type="submit" class="button">Submit</button>
+					<button type="submit" class="button" value="yes">Submit</button>
 				</footer>
 			</form>
 			
