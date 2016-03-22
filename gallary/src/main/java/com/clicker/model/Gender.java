@@ -24,4 +24,10 @@ public enum Gender  {
 		return code;
 	}
 	
+	public static Gender fromCode(String code) {
+		if(code.equalsIgnoreCase("M")) return MALE;
+		else if(code.equalsIgnoreCase("F")) return FEMALE;
+		return OTHER;
+	}
+	
 }

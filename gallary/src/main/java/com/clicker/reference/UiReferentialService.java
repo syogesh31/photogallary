@@ -1,4 +1,4 @@
-package com.clicker.referance;
+package com.clicker.reference;
 
 import java.util.List;
 
