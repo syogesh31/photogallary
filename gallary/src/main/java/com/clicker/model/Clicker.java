@@ -49,7 +49,7 @@ public class Clicker {
 	@Email
 	String email;
 
-	@Column(name="ENABLED")
+	@Column(name="ACTIVE")
 	Boolean active;
 	
 	public String getFirstName() {

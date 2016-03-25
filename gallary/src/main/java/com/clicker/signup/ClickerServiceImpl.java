@@ -19,28 +19,39 @@ public class ClickerServiceImpl implements ClickerService {
 	@Autowired
 	ClickerRepository clickerRepository;
 	
+	@Autowired(required=false)
+	ProfileActivator activator;
+	
 	BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 	
 	public void addClicker(Clicker clicker) throws UserIdExistException,EmailExistException {
-		hashPassword(clicker);
+		
+		performPreExistanceCheck(clicker);
+		clicker.setPassword(encoder.encode(clicker.getPassword()));
+		clicker.setActive(Boolean.TRUE);
+		
+		if(activator!=null){
+			activator.configureProfileAndContactUser(clicker);
+		}
+		
+		clickerRepository.save(clicker);
+	}
+
+	
+	private void performPreExistanceCheck(Clicker clicker)
+			throws EmailExistException, UserIdExistException {
 		
 		List<Clicker> c = clickerRepository.findClickerByEmail(clicker.getEmail());
 		if(!c.isEmpty()){
 			throw new EmailExistException("Email id "+clicker.getEmail()+" exist in System");
 		}
 		
-		c = clickerRepository.findClickerByUserName(clicker.getUserName());
 		
+		c = clickerRepository.findClickerByUserName(clicker.getUserName());
 		if(!c.isEmpty()){
 			throw new UserIdExistException("User id "+clicker.getUid()+" exist in system");
 		}
-		clickerRepository.save(clicker);
 	}
-
 	
-	
-	private void hashPassword(Clicker clicker) {
-				clicker.setPassword(encoder.encode(clicker.getPassword()));
-	}
 
 }

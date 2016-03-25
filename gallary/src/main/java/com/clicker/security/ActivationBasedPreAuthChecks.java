@@ -1,9 +1,14 @@
 package com.clicker.security;
 
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.authentication.AccountStatusUserDetailsChecker;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
-public class ClickerPreAuthChecks extends AccountStatusUserDetailsChecker {
+
+@Service
+@ConditionalOnProperty(prefix="clicker.security" ,name="profile.activation.enabled" , havingValue="true", matchIfMissing=false)
+public class ActivationBasedPreAuthChecks extends AccountStatusUserDetailsChecker {
 
 	@Override
 	public void check(UserDetails user) {
