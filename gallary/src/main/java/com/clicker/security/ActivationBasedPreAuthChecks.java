@@ -3,11 +3,11 @@ package com.clicker.security;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.security.authentication.AccountStatusUserDetailsChecker;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 
-@Service
-@ConditionalOnProperty(prefix="clicker.security" ,name="profile.activation.enabled" , havingValue="true", matchIfMissing=false)
+@Component
+@ConditionalOnProperty(prefix="clicker.security" ,name="email.activation.enabled" , havingValue="true", matchIfMissing=false)
 public class ActivationBasedPreAuthChecks extends AccountStatusUserDetailsChecker {
 
 	@Override

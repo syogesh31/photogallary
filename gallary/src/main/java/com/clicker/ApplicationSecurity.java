@@ -42,7 +42,7 @@ public class ApplicationSecurity extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().				
-				antMatchers("/registration","/login","/logout","/").permitAll().
+				antMatchers("/registration","/login","/logout","/index","/").permitAll().
 				anyRequest().authenticated().
 				and().
 			formLogin().defaultSuccessUrl("/"). //TODO:  This should  be  USER  Homepage after login
